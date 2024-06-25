@@ -72,7 +72,7 @@ GO
 
 INSERT INTO dbo.Employee (FirstName,LastName,SeniorityLevelID,DepartmentID,LocationID)
 SELECT (LEFT(FullName,charindex(' ',FullName,0)-1)) as FirstName, (SUBSTRING(FullName,charindex(' ',FullName,0)+1,LEN(FullName))) as LastName,
-1,1,1 -- bid na slikata bese da se notnull ova go staviv kolku da ima podatok podolu pravam update
+1,1,1 
 FROM WideWorldImporters.Application.People 
 GO
 
@@ -167,7 +167,7 @@ INSERT INTO dbo.Salary (EmployeeId,Month,Year,GrossAmount,NetAmount,RegularWorkA
 SELECT EmployeeID, Month, Year, GrossAmount, NetAmount, RegularWorkAmount,
 CASE WHEN Month%2 <> 0 THEN (NetAmount - RegularWorkAmount) ELSE 0.00 END as BonusAmount,
 CASE WHEN Month%2 = 0 THEN (NetAmount - RegularWorkAmount) ELSE 0.00 END as OvertimeAmount, 
-0, 0 -- isto kako pogore not null barase da bidat spored dijagramot, podolu pravam update
+0, 0 
 FROM cte2
 GO
 
@@ -198,10 +198,6 @@ GO
 --group by EmployeeId,Year
 --having sum(Vacationdays) between 20 and 30
 --order by EmployeeId,Year
-
-
---Database Diagram ne se zacuvuva bidejki imam na pochetok drop database if exists, ama so samoto klikanje na new database samata se generira avtomatski 
--- poradi kluchevite koi gi imam postaveno
 
 --select * from dbo.Employee
 --select * from dbo.Salary where EmployeeId = 1 order by year
