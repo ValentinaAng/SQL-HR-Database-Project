@@ -1,4 +1,4 @@
-# SQL-project
+# SQL-project (HR Database)
 This is my first sql project.
 
 This SQL project marks the initiation into database management, focusing on the creation of a Human Resources (HR) database from scratch. 
